@@ -11,10 +11,64 @@ $(document).ready(function() {
   var slideTotal = timelineInner.length;
   var previous = $('.previous');
   var next = $('.next');
-  var speed = 2000;
+  var speed = 1000;
 
+  // Calculate the slideshow height and position based on:
+  // browser height, dates height, and header height
+  var windowHeight = $(window).height();
+  var dates = $('.dates');
+  var dateHeight = dates.height();
+  var headerHeight = $('.header-wrapper').height();
+
+  $(window).resize(function() {
+    windowHeight = $(window).height();
+    var timelineHeight = windowHeight - dateHeight - headerHeight;
+    if (timelineHeight > 800) {
+      timelineHeight = 800;
+    }
+    var timelineTop = headerHeight;
+    var dateTop = headerHeight + timelineHeight;
+     // Set the slider and date box positions
+    dates.css('top', dateTop);
+    timelineInner.css({'height': timelineHeight,
+                       'top': timelineTop
+                      });
+    previous.css({'height': timelineHeight,
+                       'top': timelineTop
+                      });
+    next.css({'height': timelineHeight,
+                       'top': timelineTop
+                      });                
+  });
+  
+  var timelineHeight = windowHeight - dateHeight - headerHeight;
+  if (timelineHeight > 800) {
+    timelineHeight = 800;
+  }
+  var timelineTop = headerHeight;
+  var dateTop = headerHeight + timelineHeight;
+ 
+  // Set the slider and date box positions
+  dates.css('top', dateTop);
+  timelineInner.css({'height': timelineHeight,
+                     'top': timelineTop
+                    });
+  previous.css({'height': timelineHeight,
+                      'top': timelineTop
+                    });
+  next.css({'height': timelineHeight,
+                      'top': timelineTop
+                    });
+  // Activate the slider with click events
   timelineInner.hide();
   activeSlide.show();
+
+
+  timelineInner.change(function() {
+    alert('change');
+    console.log(timelineInner.css('top'));
+  });
+
 
   dateBox.click(function() {
     var previousIndex = slideIndex;
