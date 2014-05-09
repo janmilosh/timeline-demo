@@ -74,11 +74,18 @@ p {
 }
 
 .dates {
-  position: relative;
-  top: 500px;
+  overflow: scroll;
   width: 100%;
+}
+
+.date-inner {
+  width: 2000px;
+}
+
+.dates {
+  position: relative;
+  top: 500px; 
   height: 80px;
-  overflow-y: scroll;
 }
 
 .date-box {
