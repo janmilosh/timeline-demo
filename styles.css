@@ -19,6 +19,13 @@ p {
 }
 
 .timeline-outer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+}
+
+.timeline-inner {
   width: 100%;
   height: 500px;
   background-position: center center;
@@ -26,18 +33,25 @@ p {
 
 .text-container {
   height: 150px;
-  width: 25%;
+  width: 350px;
+  max-width: 100%;
   margin-left: 15%;
   float: left;
-  margin-top: 270px;
+  position: relative;
+  top: 270px;
   padding: 25px;
   background: rgba(0,0,0,0.7);
   border-radius: 5px;
 }
+
 .dates {
+  position: relative;
+  top: 500px;
   width: 100%;
-  overflow-x: scroll;
+  height: 80px;
+  overflow-y: scroll;
 }
+
 .date-box {
   padding: 12px 20px;
   height: 80px;
@@ -98,7 +112,14 @@ p.month {
   padding-right: 15px;
 }
 
+@media (max-width: 767px) {
 
+  .text-container {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 
 
