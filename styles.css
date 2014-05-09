@@ -18,6 +18,29 @@ p {
   color: white;
 }
 
+.previous, .next {
+  height: 500px;
+  width: 8%;
+  background: none;
+  position: fixed;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.previous {
+  top: 0;
+  left: 0;
+}
+
+.previous:hover, .next:hover {
+  background: rgba(0,0,0,0.2);
+}
+
+.next {
+  top: 0;
+  right: 0;
+}
+
 .timeline-outer {
   position: absolute;
   top: 0;

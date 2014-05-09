@@ -5,6 +5,8 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+  <div class="previous"></div>
+  <div class="next"></div>
   <div class="timeline-outer">
     <div class="timeline-inner" id="boat-img" style="background-image: url('images/boat.jpg')">
       <div class="text-container">
@@ -27,9 +29,23 @@
     </div>
   </div>
   <div class="timeline-outer">
-    <div class="timeline-inner" id="meercat-img" style="background-image: url('images/meercat.jpg')">
+    <div class="timeline-inner" id="bike-img" style="background-image: url('images/bike.jpg')">
       <div class="text-container">
-        <p id="meercat-content">How did he get in here?</p>
+        <p id="bike-content">An old motorcycle.</p>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-outer">
+    <div class="timeline-inner" id="bridge-img" style="background-image: url('images/bridge.jpg')">
+      <div class="text-container">
+        <p id="bridge-content">A bridge in the country.</p>
+      </div>
+    </div>
+  </div>
+  <div class="timeline-outer">
+    <div class="timeline-inner" id="woods-img" style="background-image: url('images/woods.jpg')">
+      <div class="text-container">
+        <p id="woods-content">Here are a few trees?</p>
       </div>
     </div>
   </div>
@@ -46,17 +62,17 @@
       <p class="year">2013</p>
       <p class="month">Sept.</p>
     </div>
-    <div class="date-box" id="meercat">
+    <div class="date-box" id="bike">
       <p class="year">2014</p>
       <p class="month">March</p>
     </div>
-    <div class="date-box">
-      <p class="year">2012</p>
+    <div class="date-box" id="bridge">
+      <p class="year">2014</p>
       <p class="month">April</p>
     </div>
-    <div class="date-box">
-      <p class="year">2013</p>
-      <p class="month">Aug.</p>
+    <div class="date-box" id="woods">
+      <p class="year">2014</p>
+      <p class="month">May</p>
     </div>
     <div class="date-box">
       <p class="year">2013</p>
@@ -102,7 +118,6 @@
   
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-  <script src="scripts/jquery.mousewheel.js"></script>
   <script src="scripts/scripts.js"></script>
 </body>
 </html>
