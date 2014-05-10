@@ -18,11 +18,18 @@ p {
   color: white;
 }
 
+.clearfix {
+  display: block;
+  clear: both;
+}
+
 .header-wrapper {
+  width: 100%;
   position: fixed;
   top: 0;
   height: 70px;
   color: white;
+  padding: 0 30px;
 }
 
 .previous, .next {
@@ -30,7 +37,7 @@ p {
   background: none;
   position: fixed;
   z-index: 1000;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 
 .previous {
@@ -38,18 +45,40 @@ p {
   left: 0;
 }
 
-.previous:hover, .next:hover {
-  background: rgba(0,0,0,0.2);
-}
-
 .next {
   top: 70px;
   right: 0;
 }
 
+/*.previous:hover, .next:hover {
+  background: rgba(0,0,0,0.2);
+}*/
+
+.timeline-nav {
+  position: absolute;
+  top: 400px;
+  color: white;
+  font-size: 60px;
+  text-align: center;
+  width: 100%;
+}
+
+.timeline-nav h2 {
+  margin: 0;
+}
+
+.timeline-right,
+.timeline-left {
+  padding: 0 15px;
+  margin: 0 30px;
+  border-radius: 5px;
+  background: rgba(0,0,0,0.4);
+  cursor: pointer;
+}
+
 .timeline-outer {
   position: absolute;
-  width: 100%; 
+  width: 100%;
 }
 
 .timeline-inner {
@@ -64,10 +93,10 @@ p {
   height: 150px;
   width: 350px;
   max-width: 100%;
-  margin-left: 15%;
+  margin-left: 10%;
   float: left;
   position: relative;
-  top: 270px;
+  top: 220px;
   padding: 25px;
   background: rgba(0,0,0,0.7);
   border-radius: 5px;
@@ -76,16 +105,13 @@ p {
 .dates {
   overflow: scroll;
   width: 100%;
+  position: relative;
+  top: 500px; 
+  height: 80px;
 }
 
 .date-inner {
   width: 2000px;
-}
-
-.dates {
-  position: relative;
-  top: 500px; 
-  height: 80px;
 }
 
 .date-box {

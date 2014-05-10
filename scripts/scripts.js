@@ -9,8 +9,8 @@ $(document).ready(function() {
   var dateBoxId;
   var slideIndex = 0;
   var slideTotal = timelineInner.length;
-  var previous = $('.previous');
-  var next = $('.next');
+  var previous = $('.timeline-left');
+  var next = $('.timeline-right');
   var speed = 1000;
 
   // Calculate the slideshow height and position based on:
@@ -121,6 +121,5 @@ $(document).ready(function() {
     $('#' + nextSlideId).show("slide", { direction: "right" }, speed);
     activeSlideId = nextSlideId;
   });
-  
-  
+    
 });
