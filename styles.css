@@ -91,11 +91,12 @@ h2.timeline-nav {
 }
 
 .date-box {
+  color: #ccc;
   padding: 12px 20px;
   height: 80px;
   width: 100px;
   float: left;
-  background: #ccc;
+  background: #333;
   border-top: 2px solid #555;
   border-right: 2px solid #555;
   border-bottom: 2px solid #555;
@@ -103,7 +104,11 @@ h2.timeline-nav {
 }
 
 .date-box.selected {
-  background: #999;
+  background: #777;
+}
+
+.date-box.selected p {
+  color: white;
 }
 
 .date-box:hover {
@@ -120,7 +125,7 @@ h2.timeline-nav {
 
 .date-box p {
   text-align: center;
-  color: #333;
+  color: #dadada;
 }
 
 p.year {
