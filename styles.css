@@ -67,7 +67,7 @@ h2.timeline-nav {
 
 .text-container {
   height: 150px;
-  width: 350px;
+  width: 400px;
   max-width: 100%;
   margin-left: 10%;
   float: left;
@@ -96,14 +96,14 @@ h2.timeline-nav {
   width: 100px;
   float: left;
   background: #ccc;
-  border-top: 2px solid #888;
-  border-right: 2px solid #888;
-  border-bottom: 2px solid #888;
+  border-top: 2px solid #555;
+  border-right: 2px solid #555;
+  border-bottom: 2px solid #555;
   cursor: pointer;
 }
 
 .date-box.selected {
-  background: #888;
+  background: #999;
 }
 
 .date-box:hover {

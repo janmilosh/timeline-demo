@@ -1,29 +1,33 @@
 $(document).ready(function() {
 
+  // Variables that we might want to adjust
   var timelineNavBottomMargin = 20;
   var speed = 1000;
 
+  // Get objects from DOM
   var timelineOuter = $('.timeline-outer');
   var timelineInner = $('.timeline-inner');
-  var dateBox = $('.date-box');  
+  var dateBox = $('.date-box');
+  var timelineNav = $('.timeline-nav');
+  var previous = $('.previous');
+  var next = $('.next');
+  var dates = $('.dates');
+  var headerWrapper = $('.header-wrapper');
+
+  // Set initial values
   var activeSlide = timelineInner.first();
   var activeSlideId = activeSlide.attr('id');
   var nextSlideId;
   var dateBoxId;
   var slideIndex = 0;
   var slideTotal = timelineInner.length;
-  var timelineNav = $('.timeline-nav');
-  var timelineNavHeight = timelineNav.height();
-  var previous = $('.previous');
-  var next = $('.next');
-
-  // Calculate the slideshow height and position based on:
-  // browser height, dates height, and header height
+  
+  // Calculate element's heights
   var windowHeight = $(window).height();
-  var dates = $('.dates');
   var dateHeight = dates.height();
-  var headerHeight = $('.header-wrapper').height();
-
+  var timelineNavHeight = timelineNav.height();
+  var headerHeight = headerWrapper.height();
+  
   // Determine the position of the slides and elements based on
   // the header height and the dates height
   function positionElements() {
