@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   // Variables that we might want to adjust
   var timelineNavBottomMargin = 20;
+  var textContainerBottomMargin = 100;
   var speed = 1000;
 
   // Get objects from DOM
@@ -13,6 +14,7 @@ $(document).ready(function() {
   var next = $('.next');
   var dates = $('.dates');
   var headerWrapper = $('.header-wrapper');
+  var textContainer = $('.text-container');
 
   // Set initial values
   var activeSlide = timelineInner.first();
@@ -25,8 +27,9 @@ $(document).ready(function() {
   // Calculate element's heights
   var windowHeight = $(window).height();
   var dateHeight = dates.height();
-  var timelineNavHeight = timelineNav.height();
+  var timelineNavHeight = timelineNav.outerHeight();
   var headerHeight = headerWrapper.height();
+  var textContainerHeight = textContainer.outerHeight();
   
   // Determine the position of the slides and elements based on
   // the header height and the dates height
@@ -39,10 +42,12 @@ $(document).ready(function() {
     var timelineTop = headerHeight;
     var dateTop = headerHeight + timelineHeight;
     var timelineNavTop = timelineTop + timelineHeight - timelineNavHeight - timelineNavBottomMargin;
+    var textContainerTop = timelineHeight - textContainerHeight - textContainerBottomMargin;
     // Set the slider, date box, and navigation arrow positions
     dates.css('top', dateTop);
     timelineInner.css({'height': timelineHeight,'top': timelineTop});
     timelineNav.css('top', timelineNavTop);
+    textContainer.css('top', textContainerTop);
   }
 
   // Set the selected class to the date-box and set new ID's
