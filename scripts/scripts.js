@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+  var timelineNavBottomMargin = 20;
+  var speed = 1000;
+
   var timelineOuter = $('.timeline-outer');
   var timelineInner = $('.timeline-inner');
   var dateBox = $('.date-box');  
@@ -9,9 +12,10 @@ $(document).ready(function() {
   var dateBoxId;
   var slideIndex = 0;
   var slideTotal = timelineInner.length;
-  var previous = $('.timeline-left');
-  var next = $('.timeline-right');
-  var speed = 1000;
+  var timelineNav = $('.timeline-nav');
+  var timelineNavHeight = timelineNav.height();
+  var previous = $('.previous');
+  var next = $('.next');
 
   // Calculate the slideshow height and position based on:
   // browser height, dates height, and header height
@@ -20,55 +24,36 @@ $(document).ready(function() {
   var dateHeight = dates.height();
   var headerHeight = $('.header-wrapper').height();
 
-  $(window).resize(function() {
-    windowHeight = $(window).height();
+  // Determine the position of the slides and elements based on
+  // the header height and the dates height
+  function positionElements() {
+    // Set a maximum height for the timeline (typically to match the image height)
     var timelineHeight = windowHeight - dateHeight - headerHeight;
     if (timelineHeight > 800) {
       timelineHeight = 800;
     }
     var timelineTop = headerHeight;
     var dateTop = headerHeight + timelineHeight;
-     // Set the slider and date box positions
+    var timelineNavTop = timelineTop + timelineHeight - timelineNavHeight - timelineNavBottomMargin;
+    // Set the slider, date box, and navigation arrow positions
     dates.css('top', dateTop);
-    timelineInner.css({'height': timelineHeight,
-                       'top': timelineTop
-                      });
-    previous.css({'height': timelineHeight,
-                       'top': timelineTop
-                      });
-    next.css({'height': timelineHeight,
-                       'top': timelineTop
-                      });                
-  });
-  
-  var timelineHeight = windowHeight - dateHeight - headerHeight;
-  if (timelineHeight > 800) {
-    timelineHeight = 800;
+    timelineInner.css({'height': timelineHeight,'top': timelineTop});
+    timelineNav.css('top', timelineNavTop);
   }
-  var timelineTop = headerHeight;
-  var dateTop = headerHeight + timelineHeight;
- 
-  // Set the slider and date box positions
-  dates.css('top', dateTop);
-  timelineInner.css({'height': timelineHeight,
-                     'top': timelineTop
-                    });
-  previous.css({'height': timelineHeight,
-                      'top': timelineTop
-                    });
-  next.css({'height': timelineHeight,
-                      'top': timelineTop
-                    });
+
+  // Put the elements in their places
+  positionElements();
+
+  // If the window is resized, get the new window height, then 
+  // put everything in the right position again
+    $(window).resize(function() {
+    windowHeight = $(window).height();
+    positionElements();                
+  });
+    
   // Activate the slider with click events
   timelineInner.hide();
   activeSlide.show();
-
-
-  timelineInner.change(function() {
-    alert('change');
-    console.log(timelineInner.css('top'));
-  });
-
 
   dateBox.click(function() {
     var previousIndex = slideIndex;

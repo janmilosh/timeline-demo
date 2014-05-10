@@ -32,43 +32,19 @@ p {
   padding: 0 30px;
 }
 
-.previous, .next {
-  width: 8%;
-  background: none;
+h2.timeline-nav {
+  margin: 0;
+  height: 60px;
   position: fixed;
-  z-index: 1000;
-  /*cursor: pointer;*/
-}
-
-.previous {
-  top: 70px;
-  left: 0;
-}
-
-.next {
-  top: 70px;
-  right: 0;
-}
-
-/*.previous:hover, .next:hover {
-  background: rgba(0,0,0,0.2);
-}*/
-
-.timeline-nav {
-  position: absolute;
   top: 400px;
   color: white;
-  font-size: 60px;
+  font-size: 50px;
   text-align: center;
   width: 100%;
 }
 
-.timeline-nav h2 {
-  margin: 0;
-}
-
-.timeline-right,
-.timeline-left {
+.previous,
+.next {
   padding: 0 15px;
   margin: 0 30px;
   border-radius: 5px;
