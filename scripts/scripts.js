@@ -41,6 +41,28 @@ $(document).ready(function() {
     timelineNav.css('top', timelineNavTop);
   }
 
+  // Set the selected class to the date-box and set new ID's
+  function setClassesAndIds() {
+    dateBox.removeClass('selected');
+    dateBox.eq(slideIndex).addClass('selected');
+    var current = dateBox.eq(slideIndex);
+    current.addClass('selected');
+    dateBoxId = current.attr('id');
+    nextSlideId = dateBoxId + '-img';
+  }
+
+  // Slide to next image
+  function slideNext() {
+    $('#' + activeSlideId).hide("slide", { direction: "left" }, speed);
+    $('#' + nextSlideId).show("slide", { direction: "right" }, speed);
+  }
+
+  // Slide to previous image
+  function slidePrevious() {
+    $('#' + activeSlideId).hide("slide", { direction: "right" }, speed);
+    $('#' + nextSlideId).show("slide", { direction: "left" }, speed);
+  }
+
   // Put the elements in their places
   positionElements();
 
@@ -55,6 +77,7 @@ $(document).ready(function() {
   timelineInner.hide();
   activeSlide.show();
 
+  // Navigate to slide corresponding to the clicked date-box
   dateBox.click(function() {
     var previousIndex = slideIndex;
     dateBox.removeClass('selected');
@@ -63,15 +86,14 @@ $(document).ready(function() {
     dateBoxId = $(this).attr('id');
     nextSlideId = dateBoxId + '-img';
     if (slideIndex > previousIndex) {
-      $('#' + activeSlideId).hide("slide", { direction: "left" }, speed);
-      $('#' + nextSlideId).show("slide", { direction: "right" }, speed);
+      slideNext();
     } else {
-      $('#' + activeSlideId).hide("slide", { direction: "right" }, speed);
-      $('#' + nextSlideId).show("slide", { direction: "left" }, speed);
+      slidePrevious();
     }    
     activeSlideId = nextSlideId;    
   });
 
+  // Navigate to the previous slide upon clicking the previous arrow icon
   previous.click(function() {
     var previousIndex = slideIndex;
     if (slideIndex === 0) {
@@ -79,31 +101,20 @@ $(document).ready(function() {
     } else {
       slideIndex -= 1;
     }
-    dateBox.removeClass('selected');
-    dateBox.eq(slideIndex).addClass('selected');
-    var current = dateBox.eq(slideIndex);
-    current.addClass('selected');
-    dateBoxId = current.attr('id');
-    nextSlideId = dateBoxId + '-img';
-    $('#' + activeSlideId).hide("slide", { direction: "right" }, speed);
-    $('#' + nextSlideId).show("slide", { direction: "left" }, speed);
+    setClassesAndIds();
+    slidePrevious();
     activeSlideId = nextSlideId;
   });
 
+  // Navigate to the next slide upon clicking the next arrow icon
   next.click(function() {
     if (slideIndex === slideTotal - 1) {
       slideIndex = 0;
     } else {
       slideIndex += 1;
     }
-    dateBox.removeClass('selected');
-    dateBox.eq(slideIndex).addClass('selected');
-    var current = dateBox.eq(slideIndex);
-    current.addClass('selected');
-    dateBoxId = current.attr('id');
-    nextSlideId = dateBoxId + '-img';
-    $('#' + activeSlideId).hide("slide", { direction: "left" }, speed);
-    $('#' + nextSlideId).show("slide", { direction: "right" }, speed);
+    setClassesAndIds();
+    slideNext();
     activeSlideId = nextSlideId;
   });
     
