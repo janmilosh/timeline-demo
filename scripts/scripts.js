@@ -114,7 +114,8 @@ $(document).ready(function() {
     positionElements();
   });
     
-  // Activate the slider with click events
+  // Hide the slides, then show only the active one
+  // (first slide is shown on load)
   timelineInner.hide();
   activeSlide.show();
 
