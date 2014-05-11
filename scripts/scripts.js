@@ -35,7 +35,7 @@ $(document).ready(function() {
   var textContainerHeight = textContainer.outerHeight();
   
   // Determine the position of the slides and elements based on
-  // the header height and the dates height
+  // the header height, the dates height, and max image height;
   function positionElements() {
     // Set a maximum height for the timeline (typically to match the image height)
     var timelineHeight = windowHeight - dateHeight - headerHeight;
@@ -79,27 +79,30 @@ $(document).ready(function() {
   // Move the selected slide's corresponding date into the window
   // if it is out of sight 
   function scrollToSelectedDate() {
+    var windowWidth = $(window).width();
     var selectedDate = $('.selected');
     var selectedOffset = selectedDate.offset().left;
+    // The scroll movement for when the dates are shifted to the left
     if (selectedOffset < 0) {
       dateBox.each(function() {
         if ($(this).hasClass('selected')) {
           selectedIndex = $(this).index();
-          console.log('selected index: ', selectedIndex);
         }
-      })
+      });
       var scrollAmount =  selectedIndex * dateBox.outerWidth();
       dates.animate({scrollLeft: scrollAmount + 'px'});      
-    }    
+    } 
+    // The scroll movement for when the dates are shifted to the right
+    if (selectedOffset > windowWidth - dateBox.outerWidth()) {
+      dateBox.each(function() {
+        if ($(this).hasClass('selected')) {
+          selectedIndex = $(this).index();
+        }
+      });
+      var scrollAmount =  (selectedIndex + 1) * dateBox.outerWidth() - windowWidth;
+      dates.animate({scrollLeft: scrollAmount + 'px'});
+    }      
   }
-  // $('.dates').mousemove(function() {
-  //   var windowWidth = $(window).width();
-  //   console.log('window width: ', windowWidth);
-  //   var left = $('.selected').offset().left;
-  //   console.log('selected position: ', left);
-  //   var scrollPosition = dates.scrollLeft();
-  //   console.log('scroll position', scrollPosition);
-  // });
 
   // Put the elements in their places
   positionElements();
