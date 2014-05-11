@@ -173,6 +173,20 @@ p.month {
   }
 }
 
+@media (max-width: 400px) {
+
+  .text-container {
+    padding: 12px;
+  }
+  .header-wrapper h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+  .header-wrapper p{
+    margin: 0;
+    text-align: center;
+  }
+}
 
 
 
