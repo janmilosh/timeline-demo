@@ -28,7 +28,6 @@ $(document).ready(function() {
   dateInner.css('width', dateInnerWidth + 'px');
 
   // Calculate element's heights
-  var windowHeight = $(window).height();
   var dateHeight = dates.height();
   var timelineNavHeight = timelineNav.outerHeight();
   var headerHeight = headerWrapper.height();
@@ -38,6 +37,7 @@ $(document).ready(function() {
   // the header height, the dates height, and max image height;
   function positionElements() {
     // Set a maximum height for the timeline (typically to match the image height)
+    var windowHeight = $(window).height();
     var timelineHeight = windowHeight - dateHeight - headerHeight;
     if (timelineHeight > 800) {
       timelineHeight = 800;
@@ -110,7 +110,12 @@ $(document).ready(function() {
   // If the window is resized, get the new window height, then 
   // put everything in the right position again
   $(window).resize(function() {
-    var windowHeight = $(window).height();
+    positionElements();
+  });
+
+  // If orientation changes on mobile, adjust element positions to
+  // the new orientation
+  $( window ).on('orientationchange', function() {
     positionElements();
   });
     

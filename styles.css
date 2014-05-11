@@ -30,6 +30,8 @@ p {
   height: 70px;
   color: white;
   padding: 0 30px;
+  background: black;
+  z-index: 1000;
 }
 
 .header-wrapper p {
@@ -71,6 +73,7 @@ h2.timeline-nav {
   height: 800px;
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .text-container {
