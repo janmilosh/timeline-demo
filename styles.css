@@ -96,6 +96,7 @@ h2.timeline-nav {
 
 .date-inner {
   width: 2000px;
+  height: 80px;
 }
 
 .date-box {
@@ -128,7 +129,7 @@ h2.timeline-nav {
 }
 
 .date-box:first-child {
-  border-left: 2px solid #aaa;
+  border-left: 2px solid #555;
 }
 
 .date-box p {

@@ -13,9 +13,10 @@ $(document).ready(function() {
   var previous = $('.previous');
   var next = $('.next');
   var dates = $('.dates');
+  var dateInner = $('.date-inner')
   var headerWrapper = $('.header-wrapper');
   var textContainer = $('.text-container');
-
+  
   // Set initial values
   var activeSlide = timelineInner.first();
   var activeSlideId = activeSlide.attr('id');
@@ -23,7 +24,9 @@ $(document).ready(function() {
   var dateBoxId;
   var slideIndex = 0;
   var slideTotal = timelineInner.length;
-  
+  var dateInnerWidth = dateBox.length * dateBox.outerWidth();
+  dateInner.css('width', dateInnerWidth + 'px');
+
   // Calculate element's heights
   var windowHeight = $(window).height();
   var dateHeight = dates.height();
@@ -56,6 +59,7 @@ $(document).ready(function() {
     dateBox.eq(slideIndex).addClass('selected');
     var current = dateBox.eq(slideIndex);
     current.addClass('selected');
+    scrollToSelectedDate();
     dateBoxId = current.attr('id');
     nextSlideId = dateBoxId + '-img';
   }
@@ -72,14 +76,39 @@ $(document).ready(function() {
     $('#' + nextSlideId).show("slide", { direction: "left" }, speed);
   }
 
+  // Move the selected slide's corresponding date into the window
+  // if it is out of sight 
+  function scrollToSelectedDate() {
+    var selectedDate = $('.selected');
+    var selectedOffset = selectedDate.offset().left;
+    if (selectedOffset < 0) {
+      dateBox.each(function() {
+        if ($(this).hasClass('selected')) {
+          selectedIndex = $(this).index();
+          console.log('selected index: ', selectedIndex);
+        }
+      })
+      var scrollAmount =  selectedIndex * dateBox.outerWidth();
+      dates.animate({scrollLeft: scrollAmount + 'px'});      
+    }    
+  }
+  // $('.dates').mousemove(function() {
+  //   var windowWidth = $(window).width();
+  //   console.log('window width: ', windowWidth);
+  //   var left = $('.selected').offset().left;
+  //   console.log('selected position: ', left);
+  //   var scrollPosition = dates.scrollLeft();
+  //   console.log('scroll position', scrollPosition);
+  // });
+
   // Put the elements in their places
   positionElements();
 
   // If the window is resized, get the new window height, then 
   // put everything in the right position again
-    $(window).resize(function() {
-    windowHeight = $(window).height();
-    positionElements();                
+  $(window).resize(function() {
+    var windowHeight = $(window).height();
+    positionElements();
   });
     
   // Activate the slider with click events
