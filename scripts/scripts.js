@@ -1,19 +1,19 @@
 $(document).ready(function() {
-
+  'use strict';
+  
   // Variables that we might want to adjust
   var timelineNavBottomMargin = 20;
   var textContainerBottomMargin = 100;
   var speed = 1000;
 
   // Get objects from DOM
-  var timelineOuter = $('.timeline-outer');
   var timelineInner = $('.timeline-inner');
   var dateBox = $('.date-box');
   var timelineNav = $('.timeline-nav');
   var previous = $('.previous');
   var next = $('.next');
   var dates = $('.dates');
-  var dateInner = $('.date-inner')
+  var dateInner = $('.date-inner');
   var headerWrapper = $('.header-wrapper');
   var textContainer = $('.text-container');
   
@@ -66,14 +66,14 @@ $(document).ready(function() {
 
   // Slide to next image
   function slideNext() {
-    $('#' + activeSlideId).hide("slide", { direction: "left" }, speed);
-    $('#' + nextSlideId).show("slide", { direction: "right" }, speed);
+    $('#' + activeSlideId).hide('slide', { direction: 'left' }, speed);
+    $('#' + nextSlideId).show('slide', { direction: 'right' }, speed);
   }
 
   // Slide to previous image
   function slidePrevious() {
-    $('#' + activeSlideId).hide("slide", { direction: "right" }, speed);
-    $('#' + nextSlideId).show("slide", { direction: "left" }, speed);
+    $('#' + activeSlideId).hide('slide', { direction: 'right' }, speed);
+    $('#' + nextSlideId).show('slide', { direction: 'left' }, speed);
   }
 
   // Move the selected slide's corresponding date into the window
@@ -82,6 +82,7 @@ $(document).ready(function() {
     var windowWidth = $(window).width();
     var selectedDate = $('.selected');
     var selectedOffset = selectedDate.offset().left;
+    var scrollAmount, selectedIndex;
     // The scroll movement for when the dates are shifted to the left
     if (selectedOffset < 0) {
       dateBox.each(function() {
@@ -89,7 +90,7 @@ $(document).ready(function() {
           selectedIndex = $(this).index();
         }
       });
-      var scrollAmount =  selectedIndex * dateBox.outerWidth();
+      scrollAmount =  selectedIndex * dateBox.outerWidth();
       dates.animate({scrollLeft: scrollAmount + 'px'});      
     } 
     // The scroll movement for when the dates are shifted to the right
@@ -99,7 +100,7 @@ $(document).ready(function() {
           selectedIndex = $(this).index();
         }
       });
-      var scrollAmount =  (selectedIndex + 1) * dateBox.outerWidth() - windowWidth;
+      scrollAmount =  (selectedIndex + 1) * dateBox.outerWidth() - windowWidth;
       dates.animate({scrollLeft: scrollAmount + 'px'});
     }      
   }
@@ -142,7 +143,6 @@ $(document).ready(function() {
 
   // Navigate to the previous slide upon clicking the previous arrow icon
   previous.click(function() {
-    var previousIndex = slideIndex;
     if (slideIndex === 0) {
       slideIndex = slideTotal -1;
     } else {
