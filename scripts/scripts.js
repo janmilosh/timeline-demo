@@ -40,8 +40,8 @@ $(document).ready(function() {
     // Set a maximum height for the timeline (typically to match the image height)
     var windowHeight = $(window).height();
     var timelineHeight = windowHeight - dateHeight - headerHeight;
-    if (timelineHeight > 617) {
-      timelineHeight = 617;
+    if (timelineHeight > 700) {
+      timelineHeight = 700;
     }
     var timelineWrapperHeight = timelineHeight + dateHeight;
     var dateTop = timelineHeight;
