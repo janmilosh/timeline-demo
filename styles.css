@@ -45,7 +45,7 @@ p {
 h2.timeline-nav {
   margin: 0;
   height: 60px;
-  position: fixed;
+  position: absolute;
   top: 400px;
   color: white;
   font-size: 50px;
@@ -60,6 +60,11 @@ h2.timeline-nav {
   border-radius: 5px;
   background: rgba(0,0,0,0.5);
   cursor: pointer;
+}
+
+.timeline-wrapper {
+  position: relative;
+  top: 70px;
 }
 
 .timeline-outer {

@@ -1,12 +1,13 @@
 $(document).ready(function() {
   'use strict';
-  
+
   // Variables that we might want to adjust
   var timelineNavBottomMargin = 20;
   var textContainerBottomMargin = 100;
   var speed = 1000;
 
   // Get objects from DOM
+  var timelineWrapper = $('.timeline-wrapper');
   var timelineInner = $('.timeline-inner');
   var dateBox = $('.date-box');
   var timelineNav = $('.timeline-nav');
@@ -39,18 +40,23 @@ $(document).ready(function() {
     // Set a maximum height for the timeline (typically to match the image height)
     var windowHeight = $(window).height();
     var timelineHeight = windowHeight - dateHeight - headerHeight;
-    if (timelineHeight > 800) {
-      timelineHeight = 800;
+    if (timelineHeight > 617) {
+      timelineHeight = 617;
     }
-    var timelineTop = headerHeight;
-    var dateTop = headerHeight + timelineHeight;
-    var timelineNavTop = timelineTop + timelineHeight - timelineNavHeight - timelineNavBottomMargin;
+    var timelineWrapperHeight = timelineHeight + dateHeight;
+    var dateTop = timelineHeight;
+    var timelineNavTop = timelineHeight - timelineNavBottomMargin - timelineNavHeight;
+    console.log('timelineHeight: ', timelineHeight);
+    console.log('timelineNavHeight: ', timelineNavHeight);
+    console.log('timelineNavBottomMargin: ', timelineNavBottomMargin);
+    console.log('timelineNavTop: ', timelineNavTop);
     var textContainerTop = timelineHeight - textContainerHeight - textContainerBottomMargin;
     // Set the slider, date box, and navigation arrow positions
     dates.css('top', dateTop);
-    timelineInner.css({'height': timelineHeight,'top': timelineTop});
+    timelineInner.css('height', timelineHeight);
     timelineNav.css('top', timelineNavTop);
     textContainer.css('top', textContainerTop);
+    timelineWrapper.css('height', timelineWrapperHeight);
   }
 
   // Set the selected class to the date-box and set new ID's
