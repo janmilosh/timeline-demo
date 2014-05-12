@@ -90,22 +90,23 @@ h2.timeline-nav {
 }
 
 .dates {
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
   width: 100%;
   position: relative;
   top: 500px; 
-  height: 80px;
+  height: 90px;
 }
 
 .date-inner {
   width: 2000px;
-  height: 80px;
+  height: 75px;
 }
 
 .date-box {
   color: #ccc;
   padding: 12px 20px;
-  height: 80px;
+  height: 75px;
   width: 100px;
   float: left;
   background: #333;
@@ -141,12 +142,12 @@ h2.timeline-nav {
 }
 
 p.year {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 2px;
 }
 
 p.month {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .container {
