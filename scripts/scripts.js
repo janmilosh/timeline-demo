@@ -46,10 +46,6 @@ $(document).ready(function() {
     var timelineWrapperHeight = timelineHeight + dateHeight;
     var dateTop = timelineHeight;
     var timelineNavTop = timelineHeight - timelineNavBottomMargin - timelineNavHeight;
-    console.log('timelineHeight: ', timelineHeight);
-    console.log('timelineNavHeight: ', timelineNavHeight);
-    console.log('timelineNavBottomMargin: ', timelineNavBottomMargin);
-    console.log('timelineNavTop: ', timelineNavTop);
     var textContainerTop = timelineHeight - textContainerHeight - textContainerBottomMargin;
     // Set the slider, date box, and navigation arrow positions
     dates.css('top', dateTop);

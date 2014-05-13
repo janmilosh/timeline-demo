@@ -67,11 +67,6 @@ h2.timeline-nav {
   top: 70px;
 }
 
-.timeline-outer {
-  position: absolute;
-  width: 100%;
-}
-
 .timeline-inner {
   position: absolute;
   width: 100%;
