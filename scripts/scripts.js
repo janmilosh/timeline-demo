@@ -155,6 +155,20 @@ $(document).ready(function() {
     activeSlideId = nextSlideId;
   });
 
+// Navigate to the previous slide on swiperight event
+  $('.timeline-inner, .timeline-nav').on( "swiperight", slideRight);
+   
+  function slideRight(){    
+    if (slideIndex === 0) {
+      slideIndex = slideTotal -1;
+    } else {
+      slideIndex -= 1;
+    }
+    setClassesAndIds();
+    slidePrevious();
+    activeSlideId = nextSlideId;
+  }
+
   // Navigate to the next slide upon clicking the next arrow icon
   next.click(function() {
     if (slideIndex === slideTotal - 1) {
@@ -166,5 +180,19 @@ $(document).ready(function() {
     slideNext();
     activeSlideId = nextSlideId;
   });
+
+  // Navigate to the next slide on swipeleft event
+  $('.timeline-inner, .timeline-nav').on( "swipeleft", slideLeft);
+
+  function slideLeft() {
+    if (slideIndex === slideTotal - 1) {
+      slideIndex = 0;
+    } else {
+      slideIndex += 1;
+    }
+    setClassesAndIds();
+    slideNext();
+    activeSlideId = nextSlideId;
+  }
     
 });
