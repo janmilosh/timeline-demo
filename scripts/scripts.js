@@ -4,7 +4,8 @@ $(document).ready(function() {
   // Variables that we might want to adjust
   var timelineNavBottomMargin = 20;
   var textContainerBottomMargin = 100;
-  var speed = 1000;
+  var maxSpeed = 1000;
+  var minSpeed = 500;
 
   // Get objects from DOM
   var timelineWrapper = $('.timeline-wrapper');
@@ -66,16 +67,28 @@ $(document).ready(function() {
     nextSlideId = dateBoxId + '-img';
   }
 
+  var speed = function() {
+    var windowWidth = $(window).width();
+    var slideSpeed = minSpeed + (maxSpeed - minSpeed)*(windowWidth/960 - 0.333333);
+    if (slideSpeed < minSpeed) {
+      return minSpeed;
+    } else if (slideSpeed > maxSpeed) {
+      return maxSpeed;
+    } else {
+      return slideSpeed;
+    }
+  }
+
   // Slide to next image
   function slideNext() {
-    $('#' + activeSlideId).hide('slide', { direction: 'left' }, speed);
-    $('#' + nextSlideId).show('slide', { direction: 'right' }, speed);
+    $('#' + activeSlideId).hide('slide', { direction: 'left' }, speed());
+    $('#' + nextSlideId).show('slide', { direction: 'right' }, speed());
   }
 
   // Slide to previous image
   function slidePrevious() {
-    $('#' + activeSlideId).hide('slide', { direction: 'right' }, speed);
-    $('#' + nextSlideId).show('slide', { direction: 'left' }, speed);
+    $('#' + activeSlideId).hide('slide', { direction: 'right' }, speed());
+    $('#' + nextSlideId).show('slide', { direction: 'left' }, speed());
   }
 
   // Move the selected slide's corresponding date into the window
